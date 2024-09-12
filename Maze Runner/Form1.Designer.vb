@@ -22,27 +22,17 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1432, 575)
-        Me.Panel1.TabIndex = 0
-        '
-        'Form1
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1456, 599)
-        Me.Controls.Add(Me.Panel1)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
-        Me.ResumeLayout(False)
+        SuspendLayout()
+        ' 
+        ' Form1
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(1664, 799)
+        Margin = New Padding(3, 4, 3, 4)
+        Name = "Form1"
+        Text = "Form1"
+        ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Panel1 As Panel
 End Class
