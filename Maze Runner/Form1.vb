@@ -32,35 +32,11 @@
     End Sub
 
     Sub CreateExit(ByRef cell)
-        'Dim edge As Integer = (gridSize * cellSize) - 1
-        'Dim random As New Random()
-        'Dim randNumberOne As Integer
-        'Dim randNumberTwo As Integer
-        'Dim temp As Integer
-
-        'Do
-        '    randNumberOne = random.Next(1, gridSize)
-        '    randNumberTwo = random.Next(1, gridSize)
-
-        '    If randNumberOne > randNumberTwo Then
-        '        temp = randNumberOne
-        '        randNumberOne = randNumberTwo
-        '        randNumberTwo = temp
-        '    End If
-
-        '    For i = randNumberOne To randNumberTwo
-        '        If cell.Location.X = edge Or cell.Location.Y = edge Then
-        '            cell.BackColor = Color.White
-        '            Exit Do
-        '        End If
-        '    Next
-        'Loop
-
-
-
         Dim random As New Random()
-        Dim randNumber As Integer = random.Next(1, gridSize)
-        Dim edgeCoord As Integer = ((gridSize) - 1) * randNumber
+        Dim randNumber As Integer = random.Next(0, gridSize)
+        Dim randGridNumber As Integer = random.Next(0, gridSize)
+        Dim edgeCoord As Integer = ((randGridNumber) - 1) * randNumber
+        Dim edgeCounter As Integer = 0
 
         For i = 1 To randNumber
             If i = randNumber Then
