@@ -14,7 +14,7 @@
                 'Cell properties created
                 cell.Size = New Size(cellSize, cellSize)
                 cell.Location = New Point(j * cellSize, i * cellSize)
-                cell.BackColor = Color.Black
+                cell.BackColor = Color.DarkSlateGray
 
                 AddHandler cell.BackColorChanged, AddressOf PictureBox_BackColorChanged
                 Panel1.Controls.Add(cell)
@@ -32,29 +32,44 @@
     End Sub
 
     Sub CreateExit(ByRef cell)
-        Dim edge As Integer = (gridSize - 2) * cellSize
+        'Dim edge As Integer = (gridSize * cellSize) - 1
+        'Dim random As New Random()
+        'Dim randNumberOne As Integer
+        'Dim randNumberTwo As Integer
+        'Dim temp As Integer
+
+        'Do
+        '    randNumberOne = random.Next(1, gridSize)
+        '    randNumberTwo = random.Next(1, gridSize)
+
+        '    If randNumberOne > randNumberTwo Then
+        '        temp = randNumberOne
+        '        randNumberOne = randNumberTwo
+        '        randNumberTwo = temp
+        '    End If
+
+        '    For i = randNumberOne To randNumberTwo
+        '        If cell.Location.X = edge Or cell.Location.Y = edge Then
+        '            cell.BackColor = Color.White
+        '            Exit Do
+        '        End If
+        '    Next
+        'Loop
+
+
+
         Dim random As New Random()
-        Dim randNumberOne As Integer
-        Dim randNumberTwo As Integer
-        Dim temp As Integer
+        Dim randNumber As Integer = random.Next(1, gridSize)
+        Dim edgeCoord As Integer = ((gridSize) - 1) * randNumber
 
-        Do
-            randNumberOne = random.Next(1, gridSize - 1)
-            randNumberTwo = random.Next(1, gridSize - 1)
-
-            If randNumberOne < randNumberTwo Then
-                temp = randNumberOne
-                randNumberOne = randNumberTwo
-                randNumberTwo = temp
-            End If
-
-            For i = randNumberOne To randNumberTwo
-                If cell.Location.X = edge Or cell.Location.Y = edge Then
+        For i = 1 To randNumber
+            If i = randNumber Then
+                If cell.Location.Y = edgeCoord * cellSize Or cell.Location.X = edgeCoord * cellSize Then
                     cell.BackColor = Color.White
+                    Exit For
                 End If
-            Next
-
-        Loop Until cell.Location.X = edge Or cell.Location.Y = edge
+            End If
+        Next
     End Sub
     Private Sub PictureBox_BackColorChanged(control As Object, e As EventArgs)
 
