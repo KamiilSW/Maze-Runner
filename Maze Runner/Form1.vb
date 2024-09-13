@@ -27,6 +27,7 @@
                 End If
 
                 FindMiddle(cell)
+                CreateBranches(cell)
             Next
         Next
         CreateExit()
@@ -36,20 +37,38 @@
     Sub FindMiddle(ByRef cell As PictureBox)
         Dim middle As Integer = (gridSize / 2) - 1 ' Finds the middle
         If cell.Location = New Point(middle * cellSize, middle * cellSize) Then
-            cell.BackColor = Color.White ' Middle cell changes color to white
+            cell.BackColor = Color.LightGray ' Middle cell changes color to white
         End If
     End Sub
+    Sub CreateBranches(ByRef cell As PictureBox)
+        Dim random As New Random()
+        Dim randomCoordX As Integer
+        Dim randomCoordY As Integer
+        Dim counter As Integer = 0
 
+        Do
+            randomCoordX = random.Next(0, gridSize - 1) * cellSize
+            randomCoordY = random.Next(0, gridSize - 1) * cellSize
+
+            If cell.Location = New Point(randomCoordX, randomCoordY) Then
+                cell.BackColor = Color.LightGray
+                If CellsOnEdge.Contains(cell) Then
+                    cell.BackColor = Color.DarkSlateGray
+                End If
+            End If
+                counter += 1
+        Loop Until counter = 12
+    End Sub
     ' Changes one of the random cells on the edge.
     Sub CreateExit()
-        Dim random As New Random()
-        ' Randomly select one cell from the edgeCells list
-        Dim randomEdgeCell As PictureBox = CellsOnEdge(random.Next(CellsOnEdge.Count))
-        ' Change the selected edge cell's color to white
-        randomEdgeCell.BackColor = Color.White
+        Dim rand As New Random()
+        'Selects a cell randomly from the Cellsonedge list
+        Dim randomCellOnEdge As PictureBox = CellsOnEdge(rand.Next(CellsOnEdge.Count))
+        randomCellOnEdge.BackColor = Color.LightGray
     End Sub
 
+
     Private Sub PictureBox_BackColorChanged(control As Object, e As EventArgs)
-        ' Handle background color change if necessary
+        ' If a picturebox's colour is changed, this will react.
     End Sub
 End Class
